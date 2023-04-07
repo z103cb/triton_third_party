@@ -480,7 +480,7 @@ ExternalProject_Add(aws-sdk-cpp
 #
 set(PROTO_LIB_PATH "${TRITON_THIRD_PARTY_INSTALL_PREFIX}/protobuf/lib/libprotobuf.a")
 if (WIN32)
-  set(PROTO_LIB_PATH "${TRITON_THIRD_PARTY_INSTALL_PREFIX}/protobuf/lib/libprotobuf.dll")
+  set(PROTO_LIB_PATH "${TRITON_THIRD_PARTY_INSTALL_PREFIX}/protobuf/lib/libprotobuf.lib") #dlll vs lib (?) seems like lib
 endif()
 ExternalProject_Add(opentelemetry-cpp
   PREFIX opentelemetry-cpp
