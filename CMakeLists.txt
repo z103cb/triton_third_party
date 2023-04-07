@@ -478,6 +478,10 @@ ExternalProject_Add(aws-sdk-cpp
 # Build OpenTelemetry C++ library
 # [FIXME] DProtobuf_LIBRARIES
 #
+set(PROTO_LIB_PATH "${TRITON_THIRD_PARTY_INSTALL_PREFIX}/protobuf/lib/libprotobuf.a")
+if (WIN32)
+  set(PROTO_LIB_PATH "${TRITON_THIRD_PARTY_INSTALL_PREFIX}/protobuf/lib/libprotobuf.dll")
+endif()
 ExternalProject_Add(opentelemetry-cpp
   PREFIX opentelemetry-cpp
   GIT_REPOSITORY "https://github.com/open-telemetry/opentelemetry-cpp.git"
@@ -485,7 +489,7 @@ ExternalProject_Add(opentelemetry-cpp
   SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/opentelemetry-cpp/src/opentelemetry-cpp"
   EXCLUDE_FROM_ALL ON
   CMAKE_CACHE_ARGS
-    -DProtobuf_LIBRARIES:STRING=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/protobuf/lib/libprotobuf.a
+    -DProtobuf_LIBRARIES:STRING=${PROTO_LIB_PATH}
     -DProtobuf_INCLUDE_DIR:STRING=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/protobuf/include
     -DProtobuf_PROTOC_EXECUTABLE:STRING=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/protobuf/bin/protoc
     -Dabsl_DIR:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/absl/lib/cmake/absl
