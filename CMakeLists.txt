@@ -75,6 +75,7 @@ endif()
 # Build libcurl
 #
 set(LIBCURL_EXTRA_BUILD_ARGS "")
+set(ZLIB_USE_STATIC_LIBS "ON")
 if (WIN32)
   set(LIBCURL_EXTRA_BUILD_ARGS "-DCURL_USE_SCHANNEL:BOOL=ON")
 endif()
