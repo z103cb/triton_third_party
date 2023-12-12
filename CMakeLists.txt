@@ -74,6 +74,8 @@ if(EXISTS "/etc/os-release")
   message(STATUS "Distro Name: ${DISTRO}")
   if(DISTRO MATCHES "CentOS.*")
     set (LIB_DIR "lib64")
+  elseif(DISTRO MATCHES "Red Hat Enterprise Linux")
+    set (LIB_DIR "lib64")    
   endif()
 endif()
 
